@@ -1,0 +1,354 @@
+{
+  "frames": {
+    "0.png": {
+      "frame": {
+        "x": 42,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    "-1.png": {
+      "frame": {
+        "x": 9,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    "-2.png": {
+      "frame": {
+        "x": 339,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    "1.png": {
+      "frame": {
+        "x": 75,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    "2.png": {
+      "frame": {
+        "x": 108,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    "3.png": {
+      "frame": {
+        "x": 141,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    "4.png": {
+      "frame": {
+        "x": 172,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    "5.png": {
+      "frame": {
+        "x": 205,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    },
+    "6.png": {
+      "frame": {
+        "x": 238,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 56,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 56,
+        "h": 22
+      }
+    },
+    "7.png": {
+      "frame": {
+        "x": 271,
+        "y": 29,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 113,
+        "h": 58
+      },
+      "sourceSize": {
+        "w": 113,
+        "h": 58
+      }
+    },
+    "gameText.png": {
+      "frame": {
+        "x": 0,
+        "y": 162,
+        "w": 48,
+        "h": 19
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 48,
+        "h": 19
+      },
+      "sourceSize": {
+        "w": 48,
+        "h": 19
+      }
+    },
+    "getText.png": {
+      "frame": {
+        "x": 0,
+        "y": 222,
+        "w": 33,
+        "h": 19
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 33,
+        "h": 19
+      },
+      "sourceSize": {
+        "w": 33,
+        "h": 19
+      }
+    },
+    "goldMedal.png": {
+      "frame": {
+        "x": 0,
+        "y": 242,
+        "w": 22,
+        "h": 22
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 22,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 22,
+        "h": 22
+      }
+    },
+    "ground.png": {
+      "frame": {
+        "x": 0,
+        "y": 0,
+        "w": 154,
+        "h": 56
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 154,
+        "h": 56
+      },
+      "sourceSize": {
+        "w": 154,
+        "h": 56
+      }
+    },
+    "overText.png": {
+      "frame": {
+        "x": 0,
+        "y": 182,
+        "w": 43,
+        "h": 19
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 43,
+        "h": 19
+      },
+      "sourceSize": {
+        "w": 43,
+        "h": 19
+      }
+    },
+    "pipeDown.png": {
+      "frame": {
+        "x": 76,
+        "y": 116,
+        "w": 26,
+        "h": 121
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 121
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 121
+      }
+    },
+    "pipeUp.png": {
+      "frame": {
+        "x": 49,
+        "y": 162,
+        "w": 26,
+        "h": 135
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 26,
+        "h": 135
+      },
+      "sourceSize": {
+        "w": 26,
+        "h": 135
+      }
+    },
+    "readyText.png": {
+      "frame": {
+        "x": 0,
+        "y": 139,
+        "w": 51,
+        "h": 22
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 51,
+        "h": 22
+      },
+      "sourceSize": {
+        "w": 51,
+        "h": 22
+      }
+    },
+    "flag.png": {
+      "frame": {
+        "x": 2,
+        "y": 173,
+        "w": 32,
+        "h": 32
+      },
+      "spriteSourceSize": {
+        "x": 0,
+        "y": 0,
+        "w": 32,
+        "h": 32
+      },
+      "sourceSize": {
+        "w": 32,
+        "h": 32
+      }
+    }
+  },
+  "meta": {
+    "image": "simpleSpriteSheet.png",
+    "size": {
+      "w": 300,
+      "h": 298
+    },
+    "scale": "1"
+  }
+}
