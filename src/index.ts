@@ -3,17 +3,14 @@ import "./style.css";
 
 import { Flag } from "./Flag";
 
-declare const VERSION: string;
-
 const gameWidth = 1200;
 const gameHeight = 1000;
-const GAME_SIZE = 15;
+const GAME_SIZE = 30;
 const TILE_SIZE = 32;
-const MINES_AMOUNT = 25;
+const MINES_AMOUNT = 150;
 const rate = MINES_AMOUNT / (GAME_SIZE * GAME_SIZE);
 
 let flags: Array<Flag> = [];
-console.log(`Welcome from pixi-typescript-boilerplate ${VERSION}`);
 
 enum TileTypes {
   BOMB = -2,
@@ -46,7 +43,7 @@ class Map {
     let tile = this._board[x][y];
     
     if (this._board[x][y] === -2) { // bomb
-      tileImg = new AnimatedSprite([Texture.from(`-2.png`)]);
+      tileImg = new AnimatedSprite([Texture.from(`-1.png`)]);
     } else {
       tileImg = new AnimatedSprite([Texture.from(`${tile}.png`)]);
     }
@@ -88,6 +85,7 @@ class Map {
         this._board[i].push(tile);
       }
     }
+    console.log(bombs);
   }
 }
 
@@ -126,7 +124,7 @@ window.onload = async (): Promise<void> => {
   
   map.generateBoard();
   map.renderMap();
-  // onMouseDown({_x: Math.floor(Math.random() * GAME_SIZE), _y:Math.floor(Math.random() * GAME_SIZE)})
+  onMouseDown({_x: Math.floor(Math.random() * GAME_SIZE), _y:Math.floor(Math.random() * GAME_SIZE), alwaysSucceed: true, tile: null})
   
   app.stage.interactive = true;
 };
@@ -135,12 +133,15 @@ function countBombsAroundTileAndReveal(x: number, y: number) {
   let count = 0;
   for (let i = Math.max(0, x - 1); i <= Math.min(GAME_SIZE - 1, x + 1); i++) {
     for (let j = Math.max(0, y - 1); j <= Math.min(GAME_SIZE - 1, y + 1); j++) {
-      if (i === x && j === y) {
-        continue;
-      }
       const count = countBombsAroundTile(i, j);
+      
       if (map.getTile(i, j) !== TileTypes.BOMB && map.getTile(i, j) !== TileTypes.FREE && flags.find((flag) => flag.x === i && flag.y === j) === undefined) {
         map.setTile(i, j, count);
+        if (map.getTile(i, j) !== TileTypes.HOT && count === 0) {
+          countBombsAroundTileAndReveal(i, j);
+        } else if (count === 0) {
+          return
+        }
       }
     }
   }
@@ -162,15 +163,27 @@ function countBombsAroundTile(x: number, y: number) {
   return count;
 }
 
+function getCoordsOfFreeAroundTile(x: number, y: number) {
+  let count = 0;
+  
+  for (let i = Math.max(0, x - 1); i <= Math.min(GAME_SIZE - 1, x + 1); i++) {
+    for (let j = Math.max(0, y - 1); j <= Math.min(GAME_SIZE - 1, y + 1); j++) {
+      if (i === x && j === y) {
+        continue;
+      }
+      if (map.getTile(i, j) === -2) {
+        count++;
+      }
+    }
+  }
+  return count;
+}
+
 function onRightDown({ tile }: { tile: { data: { global: { x: number; y: number } } } }) {
-  console.log(tile)
   const x = Math.floor(tile.data.global.x / 32);
   const y = Math.floor(tile.data.global.y / 32);
-  console.log(flags)
   const flagIndex = flags.findIndex((flag) => flag.x === x && flag.y === y)
-  console.log(flagIndex)
   if (flagIndex > -1) {
-    console.log(flagIndex)
     flags.splice(flagIndex, 1);
   } else {
     let flag = new Flag(x, y);
@@ -178,34 +191,28 @@ function onRightDown({ tile }: { tile: { data: { global: { x: number; y: number 
     flags.push(flag);
   }
   flags.forEach((flag) => {
-    console.log(flag)
     if (!flag.rendered) {
-      console.log('u')
       app.stage.addChild(flag.renderFlag());
-      console.log(app.stage.children.length)
     }
   });
   // flags = flags.filter((flag) => flag.x !== x && flag.y !== y)
-  console.log(flags)
   // renderFlags();
 }
 
 
-function onMouseDown({ tile, _x, _y }: { tile: AnimatedSprite; _x?: number; _y?: number}) {
+function onMouseDown({ tile, _x, _y, alwaysSucceed }: { tile: AnimatedSprite | null; _x?: number; _y?: number, alwaysSucceed: boolean}) {
+  alwaysSucceed = alwaysSucceed || false;
   const x = _x || Math.floor(tile.data.global.x / 32);
   const y = _y || Math.floor(tile.data.global.y / 32);
   
-  if (map.isTileBomb(x, y)) {
+  if (map.isTileBomb(x, y) && !alwaysSucceed) {
     console.log('game over');
     map.setTile(x, y, TileTypes.BOMB);
-  } else if (map.getTile(x, y) === TileTypes.DEFAULT) {
-    console.log('1')
+  } else if (map.getTile(x, y) !== TileTypes.BOMB) {
     const count = countBombsAroundTile(x, y)
-    if (count === 0) {
+    if (count === 0 && map.getTile(x, y) !== TileTypes.FREE) {
       map.setTile(x, y, TileTypes.FREE);
-      // console.log(x, y, 'free')
       countBombsAroundTileAndReveal(x, y)
-      
     } else {
       map.setTile(x, y, count);
     }
@@ -218,8 +225,6 @@ document.addEventListener('contextmenu', e => {
 });
 
 function onMouseDownFlag({ flag }: { flag: Flag }) {
-  console.log(flag.tile?.destroy())
-  console.log(flag)
   app.stage.removeChild<AnimatedSprite>(flag.tile);
   
 }
